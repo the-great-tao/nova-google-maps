@@ -3,10 +3,10 @@ import mapboxgl from 'mapbox-gl';
 export default {
     data() {
         return {
-            coordinates: [-74.5, 40],
+            coordinates: [0, 0],
             location: null,
+            map: null,
             marker: null,
-            map: null
         }
     },
 
@@ -14,17 +14,17 @@ export default {
         initMapbox() {
             if (this.field.defaultCoordinates) {
                 this.coordinates = [
-                    this.field.defaultCoordinates.lng,
-                    this.field.defaultCoordinates.lat,
+                    this.field.defaultCoordinates.longitude,
+                    this.field.defaultCoordinates.latitude,
                 ]
             }
 
-            mapboxgl.accessToken = 'pk.eyJ1IjoicGNuYWlscyIsImEiOiJja2VzaXV2ZGkxdW1jMnhvOWJrY3hjeXJlIn0.0ubUmrh0jtgf6RxMMQbs4A';
+            mapboxgl.accessToken = this.field.accessToken;
             this.map = new mapboxgl.Map({
                 container: 'mapbox',
                 style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
                 center: this.coordinates, // starting position [lng, lat]
-                zoom: this.field.zoom, // starting zoom
+                zoom: this.field.zoomLevel, // starting zoom
             });
         },
 
@@ -32,8 +32,8 @@ export default {
             this.clearMarker();
             this.marker = new mapboxgl.Marker()
                 .setLngLat([
-                    location.latlng.lng,
-                    location.latlng.lat,
+                    location.longitude,
+                    location.latitude,
                 ])
                 .addTo(this.map);
         },

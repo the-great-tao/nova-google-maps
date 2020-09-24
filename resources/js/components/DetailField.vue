@@ -1,9 +1,9 @@
 <template>
     <panel-item :field="field" >
         <template slot="value">
-            <div id="mapbox">
+            <div>
                 <p class="text-90" v-if="location">{{ location.value }}</p>
-                <div class="whitecube-gmap mt-4" ref="map"></div>
+                <div class="whitecube-gmap mt-4" id="mapbox" ref="mapbox"></div>
             </div>
         </template>
     </panel-item>

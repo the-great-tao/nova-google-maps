@@ -8,33 +8,23 @@ use Laravel\Nova\Nova;
 
 class FieldServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::script('nova-google-maps_mapbox', __DIR__ . '/../dist/js/mapbox-gl.js');
-            Nova::style('nova-google-maps_mapbox', __DIR__ . '/../dist/css/mapbox-gl.css');
+            Nova::script('nova-mapbox-gl', __DIR__ . '/../dist/js/mapbox-gl.js');
+            Nova::style('nova-mapbox-gl', __DIR__ . '/../dist/css/mapbox-gl.css');
 
-            Nova::script('nova-google-maps', __DIR__ . '/../dist/js/field.js');
-            Nova::style('nova-google-maps', __DIR__ . '/../dist/css/field.css');
+            Nova::script('nova-mapbox', __DIR__ . '/../dist/js/field.js');
+            Nova::style('nova-mapbox', __DIR__ . '/../dist/css/field.css');
         });
 
         $this->publishes([
-            __DIR__ . '/../config/nova-google-maps.php' => config_path('nova-google-maps.php'),
-        ], 'nova-google-maps');
+            __DIR__ . '/../config/nova-mapbox.php' => config_path('nova-mapbox.php'),
+        ], 'nova-mapbox');
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/nova-google-maps.php', 'nova-google-maps');
+        $this->mergeConfigFrom(__DIR__ . '/../config/nova-mapbox.php', 'nova-mapbox');
     }
 }
