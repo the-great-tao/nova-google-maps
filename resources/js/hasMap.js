@@ -1,5 +1,3 @@
-import * as mapboxgl__ from 'mapbox-gl';
-
 export default {
     data() {
         return {
@@ -19,8 +17,8 @@ export default {
                 ]
             }
 
-            mapboxgl_.accessToken = 'pk.eyJ1IjoicGNuYWlscyIsImEiOiJja2VzaXV2ZGkxdW1jMnhvOWJrY3hjeXJlIn0.0ubUmrh0jtgf6RxMMQbs4A';
-            this.map = new mapboxgl_.Map({
+            mapboxgl.accessToken = 'pk.eyJ1IjoicGNuYWlscyIsImEiOiJja2VzaXV2ZGkxdW1jMnhvOWJrY3hjeXJlIn0.0ubUmrh0jtgf6RxMMQbs4A';
+            this.map = new mapboxgl.Map({
                 container: 'map',
                 style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
                 center: this.coordinates, // starting position [lng, lat]
@@ -30,7 +28,7 @@ export default {
 
         setLocation(location) {
             this.clearMarker();
-            this.marker = new mapboxgl_.Marker()
+            this.marker = new mapboxgl.Marker()
                 .setLngLat([
                     location.latlng.lng,
                     location.latlng.lat,
