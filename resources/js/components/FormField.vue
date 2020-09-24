@@ -1,5 +1,5 @@
 <template>
-    <default-field :field="field" :errors="errors" :full-width-content="true">
+    <default-field :field="field" :errors="errors">
         <template slot="field">
             <input
                     ref="input"
