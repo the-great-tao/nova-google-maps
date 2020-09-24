@@ -21,7 +21,7 @@ export default {
 
             mapboxgl.accessToken = 'pk.eyJ1IjoicGNuYWlscyIsImEiOiJja2VzaXV2ZGkxdW1jMnhvOWJrY3hjeXJlIn0.0ubUmrh0jtgf6RxMMQbs4A';
             this.map = new mapboxgl.Map({
-                container: 'map',
+                container: 'mapbox',
                 style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
                 center: this.coordinates, // starting position [lng, lat]
                 zoom: this.field.zoom, // starting zoom

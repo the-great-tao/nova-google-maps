@@ -1,7 +1,7 @@
 <template>
     <panel-item :field="field" >
         <template slot="value">
-            <div>
+            <div id="mapbox">
                 <p class="text-90" v-if="location">{{ location.value }}</p>
                 <div class="whitecube-gmap mt-4" ref="map"></div>
             </div>
