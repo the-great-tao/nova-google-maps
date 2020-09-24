@@ -16,8 +16,6 @@ class FieldServiceProvider extends ServiceProvider
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::script('nova-google-maps_googlemaps', $this->gmapsScript());
-            
             Nova::script('nova-google-maps_mapbox', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js');
             Nova::style('nova-google-maps_mapbox', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');
             
@@ -38,16 +36,5 @@ class FieldServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/nova-google-maps.php', 'nova-google-maps');
-    }
-
-    protected function gmapsScript()
-    {
-        return vsprintf(
-            'https://maps.googleapis.com/maps/api/js?key=%s&language=%s',
-            [
-                config('nova-google-maps.api_key'),
-                config('nova-google-maps.language'),
-            ]
-        );
     }
 }

@@ -18,7 +18,7 @@ export default {
 
     mounted() {
         this.location = JSON.parse(this.field.value);
-        this.initGmaps();
+        this.initMapbox();
 
         if(this.location) {
             // Add a little delay to fix panTo not registering on update

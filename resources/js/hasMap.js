@@ -1,7 +1,7 @@
 export default {
-
     data() {
         return {
+            coordinates: [-74.5, 40],
             location: null,
             marker: null,
             map: null
@@ -9,37 +9,38 @@ export default {
     },
 
     methods: {
-        /**
-         * Init the gmap
-         */
-        initGmaps() {
-            this.map = new google.maps.Map(this.$refs.map, {
-                center: this.field.defaultCoordinates || {lat: -34.397, lng: 150.644},
-                zoom: this.field.zoom || 8
+        initMapbox() {
+            if (this.field.defaultCoordinates) {
+                this.coordinates = [
+                    this.field.defaultCoordinates.lng,
+                    this.field.defaultCoordinates.lat,
+                ]
+            }
+
+            mapboxgl.accessToken = 'pk.eyJ1IjoicGNuYWlscyIsImEiOiJja2VzaXV2ZGkxdW1jMnhvOWJrY3hjeXJlIn0.0ubUmrh0jtgf6RxMMQbs4A';
+            this.map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                center: this.coordinates, // starting position [lng, lat]
+                zoom: this.field.zoom, // starting zoom
             });
         },
 
-        /**
-         * Set an active location
-         */
         setLocation(location) {
             this.clearMarker();
-            this.map.panTo(this.location.latlng);
-            this.marker = new google.maps.Marker({
-                position: this.location.latlng,
-                map: this.map
-            });
+            this.marker = new mapboxgl.Marker()
+                .setLngLat([
+                    location.latlng.lng,
+                    location.latlng.lat,
+                ])
+                .addTo(this.map);
         },
 
-        /**
-         * Clear the gmap's marker
-         */
         clearMarker() {
-            if(!this.marker) return;
-
-            this.marker.setMap(null);
-            this.marker = null;
+            if (this.marker) {
+                this.marker.remove();
+                this.marker = null;
+            }
         },
     }
-
 }
