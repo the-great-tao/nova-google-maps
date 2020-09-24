@@ -1,5 +1,5 @@
 <template>
-    <panel-item :field="field" >
+    <panel-item :field="field">
         <template slot="value">
             <div>
                 <p class="text-90" v-if="location">{{ location.value }}</p>
@@ -10,24 +10,24 @@
 </template>
 
 <script>
-import HasMap from '../hasMap';
+    import HasMap from '../hasMap';
 
-export default {
-    props: ['resource', 'resourceName', 'resourceId', 'field'],
-    mixins: [HasMap],
+    export default {
+        props: ['resource', 'resourceName', 'resourceId', 'field'],
+        mixins: [HasMap],
 
-    mounted() {
-        this.location = JSON.parse(this.field.value);
-        this.initMapbox();
+        mounted() {
+            this.location = JSON.parse(this.field.value);
+            this.initMapbox();
 
-        if(this.location) {
-            // Add a little delay to fix panTo not registering on update
-            setTimeout(() => {
-                this.setLocation(this.location);
-            }, 100);
+            if (this.location) {
+                // Add a little delay to fix panTo not registering on update
+                setTimeout(() => {
+                    this.setLocation(this.location);
+                }, 100);
+            }
         }
     }
-}
 </script>
 
 <style scoped>

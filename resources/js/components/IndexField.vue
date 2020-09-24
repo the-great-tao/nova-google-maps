@@ -3,17 +3,17 @@
 </template>
 
 <script>
-export default {
-    props: ['resourceName', 'field'],
+    export default {
+        props: ['resourceName', 'field'],
 
-    computed: {
-        address() {
-            let value = JSON.parse(this.field.value);
+        computed: {
+            address() {
+                let value = JSON.parse(this.field.value);
 
-            if(!value) return '--';
+                if (!value) return '--';
 
-            return value.value;
+                return value.value;
+            }
         }
     }
-}
 </script>
