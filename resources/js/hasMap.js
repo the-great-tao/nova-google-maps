@@ -1,3 +1,5 @@
+import mapboxgl from 'mapbox-gl';
+
 export default {
     data() {
         return {
