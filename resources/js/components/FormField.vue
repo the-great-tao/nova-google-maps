@@ -39,7 +39,7 @@
             if (this.location) {
                 // Add a little delay to fix panTo not registering on update
                 setTimeout(() => {
-                    this.places.setVal(this.location.value);
+                    // this.places.setVal(this.location.value);
                     this.setLocation(this.location);
                 }, 100);
             }
