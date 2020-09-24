@@ -1,5 +1,5 @@
 <template>
-    <default-field :field="field" :errors="errors">
+    <default-field :field="field" :errors="errors" :full-width-content="true">
         <template slot="field">
             <input
                     ref="input"
@@ -18,7 +18,7 @@
 
 <script>
     import {FormField, HandlesValidationErrors} from 'laravel-nova';
-    import Places from 'places.js';
+    // import Places from 'places.js';
     import HasMap from '../hasMap';
 
     export default {
