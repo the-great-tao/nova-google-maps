@@ -6,7 +6,7 @@ use Laravel\Nova\Fields\Field;
 
 class Mapbox extends Field
 {
-    public $component = 'nova-mapbox-component';
+    public $component = 'nova-mapbox';
 
     public function accessToken($accessToken)
     {
