@@ -39,7 +39,7 @@
             if (this.location) {
                 // Add a little delay to fix panTo not registering on update
                 setTimeout(() => {
-                    // this.places.setVal(this.location.value);
+                    this.places.setVal(this.location.value);
                     this.setLocation(this.location);
                 }, 100);
             }
@@ -72,6 +72,7 @@
                         query: this.location.query,
                         suburb: this.location.suburb,
                         type: this.location.type,
+
                         value: this.location.value,
                         longitude: this.location.latlng.lng,
                         latitude: this.location.latlng.lat,
@@ -109,9 +110,6 @@
                 if (!e.suggestion) return;
 
                 this.location = e.suggestion;
-
-                console.log(this.location);
-
                 this.location.longitude = this.location.latlng.lng;
                 this.location.latitude = this.location.latlng.lat;
                 this.setLocation(this.location);
