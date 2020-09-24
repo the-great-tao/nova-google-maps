@@ -1,4 +1,6 @@
-import mapboxgl from '../../dist/js/mapbox-gl.js';
+import {Map, Marker} from '../../dist/js/mapbox-gl.js';
+
+console.log(Map);
 
 export default {
     data() {
@@ -20,7 +22,7 @@ export default {
             }
 
             mapboxgl.accessToken = 'pk.eyJ1IjoicGNuYWlscyIsImEiOiJja2VzaXV2ZGkxdW1jMnhvOWJrY3hjeXJlIn0.0ubUmrh0jtgf6RxMMQbs4A';
-            this.map = new mapboxgl.Map({
+            this.map = Map({
                 container: 'map',
                 style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
                 center: this.coordinates, // starting position [lng, lat]
@@ -30,7 +32,7 @@ export default {
 
         setLocation(location) {
             this.clearMarker();
-            this.marker = new mapboxgl.Marker()
+            this.marker = new Marker()
                 .setLngLat([
                     location.latlng.lng,
                     location.latlng.lat,
