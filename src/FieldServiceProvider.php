@@ -16,11 +16,11 @@ class FieldServiceProvider extends ServiceProvider
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::script('nova-google-maps_mapbox', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js');
-            Nova::style('nova-google-maps_mapbox', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');
-            
-            Nova::script('nova-google-maps', __DIR__.'/../dist/js/field.js');
-            Nova::style('nova-google-maps', __DIR__.'/../dist/css/field.css');
+            Nova::script('nova-google-maps_mapbox', __DIR__ . '/../dist/js/mapbox-gl.js');
+            Nova::style('nova-google-maps_mapbox', __DIR__ . '/../dist/css/mapbox-gl.css');
+
+            Nova::script('nova-google-maps', __DIR__ . '/../dist/js/field.js');
+            Nova::style('nova-google-maps', __DIR__ . '/../dist/css/field.css');
         });
 
         $this->publishes([
@@ -35,6 +35,6 @@ class FieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/nova-google-maps.php', 'nova-google-maps');
+        $this->mergeConfigFrom(__DIR__ . '/../config/nova-google-maps.php', 'nova-google-maps');
     }
 }
