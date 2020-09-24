@@ -34,12 +34,15 @@ export default {
         },
 
         setLocation(location) {
+            let center = [
+                location.longitude,
+                location.latitude,
+            ];
+
             this.clearMarker();
+            this.map.setCenter(center);
             this.marker = new mapboxgl.Marker()
-                .setLngLat([
-                    location.longitude,
-                    location.latitude,
-                ])
+                .setLngLat(center)
                 .addTo(this.map);
         },
 
