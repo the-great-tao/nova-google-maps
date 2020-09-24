@@ -11,7 +11,7 @@
                     v-model="value"
             />
 
-            <div class="whitecube-gmap mt-4" id="mapbox" ref="mapbox"></div>
+            <div class="whitecube-gmap mt-4" id="mapbox"></div>
         </template>
     </default-field>
 </template>

@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 export default {
     data() {
         return {
-            coordinates: [0, 0],
+            coordinates: null,
             location: null,
             map: null,
             marker: null,
@@ -20,12 +20,17 @@ export default {
             }
 
             mapboxgl.accessToken = this.field.accessToken;
+
             this.map = new mapboxgl.Map({
                 container: 'mapbox',
                 style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
                 center: this.coordinates, // starting position [lng, lat]
                 zoom: this.field.zoomLevel, // starting zoom
             });
+
+            this.marker = new mapboxgl.Marker()
+                .setLngLat(this.coordinates)
+                .addTo(this.map);
         },
 
         setLocation(location) {

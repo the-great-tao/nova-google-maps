@@ -3,7 +3,7 @@
         <template slot="value">
             <div>
                 <p class="text-90" v-if="location">{{ location.value }}</p>
-                <div class="whitecube-gmap mt-4" id="mapbox" ref="mapbox"></div>
+                <div class="whitecube-gmap mt-4" id="mapbox"></div>
             </div>
         </template>
     </panel-item>
