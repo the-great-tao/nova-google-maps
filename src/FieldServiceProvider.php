@@ -16,7 +16,7 @@ class FieldServiceProvider extends ServiceProvider
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-//             Nova::script('nova-google-maps_googlemaps', $this->gmapsScript());
+            Nova::script('nova-google-maps_googlemaps', $this->gmapsScript());
             
             Nova::script('nova-google-maps_mapbox', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js');
             Nova::style('nova-google-maps_mapbox', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');
