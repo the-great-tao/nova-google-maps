@@ -1,3 +1,5 @@
+import mapboxgl from '../../dist/js/mapbox-gl.js';
+
 export default {
     data() {
         return {
