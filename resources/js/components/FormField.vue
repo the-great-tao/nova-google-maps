@@ -11,14 +11,14 @@
                     v-model="value"
             />
 
-            <div class="whitecube-gmap mt-4" id="mapbox"></div>
+            <div class="whitecube-gmap mt-4" id="mapbox" ref="mapbox"></div>
         </template>
     </default-field>
 </template>
 
 <script>
     import {FormField, HandlesValidationErrors} from 'laravel-nova';
-    // import Places from 'places.js';
+    import Places from 'places.js';
     import HasMap from '../hasMap';
 
     export default {
@@ -57,40 +57,42 @@
              * Fill the given FormData object with the field's internal value.
              */
             fill(formData) {
-                // let location = null;
-                //
-                // if (this.location) {
-                //     location = {
-                //         administrative: this.location.administrative,
-                //         city: this.location.city,
-                //         country: this.location.country,
-                //         countryCode: this.location.countryCode,
-                //         county: this.location.county,
-                //         latlng: this.location.latlng,
-                //         name: this.location.name,
-                //         postcode: this.location.postcode,
-                //         query: this.location.query,
-                //         suburb: this.location.suburb,
-                //         type: this.location.type,
-                //         value: this.location.value
-                //     };
-                // }
-                //
-                // formData.append(this.field.attribute, JSON.stringify(location) || '');
+                let location = null;
+
+                if (this.location) {
+                    location = {
+                        administrative: this.location.administrative,
+                        city: this.location.city,
+                        country: this.location.country,
+                        countryCode: this.location.countryCode,
+                        county: this.location.county,
+                        latlng: this.location.latlng,
+                        name: this.location.name,
+                        postcode: this.location.postcode,
+                        query: this.location.query,
+                        suburb: this.location.suburb,
+                        type: this.location.type,
+                        value: this.location.value,
+                        longitude: this.location.latlng.lng,
+                        latitude: this.location.latlng.lat,
+                    };
+                }
+
+                formData.append(this.field.attribute, JSON.stringify(location) || '');
             },
 
             /**
              * Init the places API input
              */
             initPlaces() {
-                // this.places = Places({
-                //     appId: null,
-                //     apiKey: null,
-                //     container: this.$refs.input
-                // });
-                //
-                // this.places.on('change', this.onSuggestion.bind(this));
-                // this.places.on('clear', this.onClear.bind(this));
+                this.places = Places({
+                    appId: null,
+                    apiKey: null,
+                    container: this.$refs.input
+                });
+
+                this.places.on('change', this.onSuggestion.bind(this));
+                this.places.on('clear', this.onClear.bind(this));
             },
 
             /**
