@@ -109,6 +109,9 @@
                 if (!e.suggestion) return;
 
                 this.location = e.suggestion;
+
+                this.location.longitude = this.location.latlng.lng;
+                this.location.latitude = this.location.latlng.lat;
                 this.setLocation(this.location);
             },
 
