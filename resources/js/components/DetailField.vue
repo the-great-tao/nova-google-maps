@@ -17,7 +17,7 @@
         mixins: [HasMap],
 
         mounted() {
-            this.location = JSON.parse(this.field.value);
+            this.location = this.field.value;
             this.initMapbox();
 
             if (this.location) {

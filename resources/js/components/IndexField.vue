@@ -8,7 +8,7 @@
 
         computed: {
             address() {
-                let value = JSON.parse(this.field.value);
+                let value = this.field.value;
 
                 if (!value) return '--';
 

@@ -50,7 +50,7 @@
              * Set the initial, internal value for the field.
              */
             setInitialValue() {
-                this.location = JSON.parse(this.field.value);
+                this.location = this.field.value;
             },
 
             /**
